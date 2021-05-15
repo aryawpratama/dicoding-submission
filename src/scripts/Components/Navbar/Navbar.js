@@ -1,16 +1,20 @@
 import "./Navbar.css";
 class Navbar extends HTMLElement {
-  connectedCallback() {
-    this.data = this.getAttribute("data-json");
-    this.decoded = JSON.parse(this.data);
-    this.render();
-  }
-  render() {
-    this.innerHTML = `
+    connectedCallback() {
+        this.logo = this.getAttribute('logo');
+        this.render();
+    }
+    render() {
+        this.innerHTML = `
     <nav>
-        <h1>TEST</h1>
+        <img src="${this.logo}" alt="Logo">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#">Favorites</a></li>
+            <li><a href="https://github.com/aryawpratama">About Us</a></li>
+        </ul>
     </nav>
     `;
-  }
+    }
 }
 customElements.define("nav-bar", Navbar);
