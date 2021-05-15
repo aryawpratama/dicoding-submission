@@ -1,3 +1,115 @@
-h1 {
-    color: rebeccapurple;
+/* Global Nav */
+
+nav {
+    height: 60px;
+    border: 1px solid #000;
+    top: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    z-index: 10;
+}
+
+.logo {
+    width: 40px;
+    border-radius: 100%;
+    top: 10px;
+    left: 10px;
+    position: absolute;
+    z-index: 10;
+}
+
+
+/* Mobile Design */
+
+.mobile {
+    display: none;
+}
+
+.bar {
+    top: 5px;
+    right: 10px;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    position: absolute;
+    z-index: 10;
+}
+
+.bar div {
+    display: block;
+    height: 6px;
+    width: 30px;
+    background: #000;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: 0.3s ease-in-out;
+    margin-top: 5px;
+}
+
+.active div:nth-child(1) {
+    transform: translateX(-7px) rotate(135deg) translateY(-15.5px);
+}
+
+.active div:nth-child(2) {
+    opacity: 0;
+    margin-left: -60px;
+}
+
+.active div:nth-child(3) {
+    transform: translateX(-7px) rotate(-135deg) translateY(15.5px);
+}
+
+.dropdown {
+    position: fixed;
+    z-index: 5;
+    top: 60px;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: #aaa;
+}
+
+
+/* Desktop Design */
+
+.desktop {
+    display: block;
+}
+
+.navigation-desktop {
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    width: 190px;
+    align-items: center;
+    justify-content: center;
+}
+
+.navigation-desktop li {
+    margin-left: 8px;
+    list-style: none;
+}
+
+.navigation-desktop a {
+    text-decoration: none;
+    color: #000;
+}
+
+
+/* Mobile/Desktop Switcher */
+
+@media (max-width: 500px) {
+    .desktop {
+        display: none;
+    }
+    .mobile {
+        display: block;
+    }
 }
