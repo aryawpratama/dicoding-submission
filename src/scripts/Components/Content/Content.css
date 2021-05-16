@@ -1,0 +1,38 @@
+.content {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    width: 180px;
+    margin-top: 30px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #444;
+    text-align: center;
+    margin: 20px auto 0px auto;
+}
+
+.card {
+    width: 300px;
+    height: 450px;
+    box-shadow: 9px 7px 70px -13px rgba(163, 163, 163, 1);
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 30px 25px;
+}
+
+.resto {
+    width: 100px;
+    height: auto;
+}
+
+.rating {
+    width: 30px;
+    height: auto;
+}

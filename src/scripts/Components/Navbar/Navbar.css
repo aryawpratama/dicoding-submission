@@ -1,22 +1,26 @@
 /* Global Nav */
 
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap");
 nav {
     height: 60px;
-    border: 1px solid #000;
     top: 0;
     left: 0;
     right: 0;
     position: fixed;
     z-index: 10;
+    padding-bottom: 20px;
 }
 
 .logo {
     width: 40px;
     border-radius: 100%;
-    top: 10px;
-    left: 10px;
+    top: 15px;
+    left: 37px;
     position: absolute;
     z-index: 10;
+    font-size: 40px;
+    color: #fff;
+    font-family: "Caveat", cursive;
 }
 
 
@@ -27,8 +31,8 @@ nav {
 }
 
 .bar {
-    top: 5px;
-    right: 10px;
+    top: 15px;
+    right: 35px;
     width: 45px;
     height: 45px;
     display: flex;
@@ -38,13 +42,15 @@ nav {
     cursor: pointer;
     position: absolute;
     z-index: 10;
+    background: transparent;
+    border: none;
 }
 
 .bar div {
     display: block;
     height: 6px;
     width: 30px;
-    background: #000;
+    background: #fff;
     border-radius: 9px;
     opacity: 1;
     left: 0;
@@ -69,11 +75,56 @@ nav {
 .dropdown {
     position: fixed;
     z-index: 5;
-    top: 60px;
+    top: -520px;
     left: 0;
     right: 0;
-    height: 200px;
-    background: #aaa;
+    height: 270px;
+    background: rgba(0, 0, 0, 0.9);
+    transition: 0.3s ease-in-out;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 460px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.down {
+    top: 0px;
+    display: block;
+}
+
+.navigation-mobile {
+    margin-top: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    flex-direction: column;
+    list-style: none;
+}
+
+.navigation-mobile li {
+    margin-top: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.navigation-mobile a {
+    padding: 10px;
+    border: #fff 1px solid;
+    border-radius: 10px;
+    width: 80%;
+    height: 20px;
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -85,7 +136,7 @@ nav {
 
 .navigation-desktop {
     display: flex;
-    flex-direction: row;
+    flex-direction: rrelativeow;
     height: 40px;
     width: 190px;
     align-items: center;
