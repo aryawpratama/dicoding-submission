@@ -6,6 +6,7 @@ import SwipeListener from 'swipe-listener';
 import "./Components/Navbar/Navbar.js";
 import "./Components/Jumbotron/Jumbotron.js";
 import "./Components/Content/Content.js";
+import "./Components/Footer/Footer.js"
 // Data
 import data from "../DATA.json";
 const dataJSON = JSON.stringify(data);
@@ -17,7 +18,8 @@ const rootRender = () => {
     root.innerHTML = `
         <nav-bar logo='${logo}'></nav-bar>
         <jumbotron-component bg='${jumbotronBg}'></jumbotron-component>
-<content-component data='${dataJSON}'></content-component>
+        <content-component data='${dataJSON}'></content-component>
+        <footer-component></footer-component>
         `;
 };
 rootRender();

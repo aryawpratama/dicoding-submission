@@ -7,7 +7,7 @@ class Footer extends HTMLElement {
   render() {
     this.innerHTML = `
         <footer>
-        
+        <p>copyright &#169; 2021 - Aria Explore Apps</p>
         </footer>
         `;
   }
