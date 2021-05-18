@@ -11,7 +11,12 @@ class Jumbotron extends HTMLElement {
         this.innerHTML = `
         <div class="jumbo">
             <div class="jumbo-content">
-                <h1>This is Jumbotron</h1>
+                <h1>Explore Your</h1>
+                <h1>Favourite Restaurant</h1>
+                <div class="search">
+                <input type="text" autofocus placeholder="Search Your Favourite Restaurant Here">
+                <button aria-label="search button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                </div>
             </div>
         </div>
     `;

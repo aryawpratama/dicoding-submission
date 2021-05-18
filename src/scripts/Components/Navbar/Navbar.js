@@ -16,7 +16,7 @@ class Navbar extends HTMLElement {
             </ul>
         </div>
         <div class="mobile">
-            <button class="bar">
+            <button aria-label="dropdown button" class="bar">
                 <div></div>
                 <div></div>
                 <div></div>
@@ -28,7 +28,6 @@ class Navbar extends HTMLElement {
                     <li><a href="https://github.com/aryawpratama">About Us</a></li>
                 </ul>
             </div>
-            <div class="overlay"></div>
         </div>
     </nav>
     `;
