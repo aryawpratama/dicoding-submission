@@ -8,7 +8,7 @@ class Content extends HTMLElement {
         this.contentLoop = '';
         this.dataJSON.restaurants.map((e) => {
             this.contentLoop += `
-            <button id='${e.id}' class="card">
+            <a href="#" id='${e.id}' class="card">
                 <div class="restopic">
                     <img class="resto" src='${e.pictureId}' alt="Resto Picture">
                 </div>
@@ -23,16 +23,22 @@ class Content extends HTMLElement {
                 <div class="desc">
                     <p class='overflow'>${e.description}</p>
                 </div>
-            </button>
+            </a>
             `
         })
         this.render();
     }
     render() {
         this.innerHTML = `
-        <h1 class='title'>Explore</h1>
+        <div class="container">
+        <h1 class='title' id="explore">Explore</h1>
+        <div class="search">
+                <input type="text" placeholder="Search Your Favourite Restaurant Here">
+                <button aria-label="search button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                </div>
         <div class="content">
         ${this.contentLoop}
+        </div>
         </div>
         `;
     }

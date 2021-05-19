@@ -33,55 +33,36 @@
     font-size: 50px;
 }
 
-.search {
+.explorenow {
+    width: 140px;
+    height: 50px;
+    background: rgb(0, 110, 255);
+    text-decoration: none;
+    color: #fff;
+    margin-top: 20px;
+    border-radius: 10px;
     display: flex;
-    width: 100%;
-    flex-direction: row;
-    margin-top: 30px;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 9px 7px 70px -13px rgb(0, 0, 0);
+    transition: 0.3s;
+}
+
+.explorenow:hover {
+    transform: scale(1.05);
+}
+
+.explorenow:active {
+    transform: scale(0.95);
+    background: rgb(0, 75, 173);
 }
 
 @media screen and (max-width: 500px) {
-    .search {
-        width: 80%;
-    }
     .jumbo-content {
         margin-top: 40px;
     }
     .jumbo-content h1 {
         font-size: 35px;
     }
-}
-
-.search input {
-    width: 85%;
-    height: 40px;
-    border-radius: 10px 0px 0px 10px;
-    border: none;
-    padding: 0px 20px;
-    margin-top: 20px;
-}
-
-.search input:focus {
-    outline: none;
-}
-
-.search button {
-    width: 15%;
-    border-radius: 0px 10px 10px 0px;
-    border: none;
-    background-color: #ccc;
-    margin-top: 20px;
-}
-
-.search button:focus~.fa-search {
-    transform: scale(1.1, 1.1);
-}
-
-.search button:active {
-    background-color: #aaa;
-}
-
-.fa {
-    margin-top: -5px;
-    margin-left: -2px;
 }
