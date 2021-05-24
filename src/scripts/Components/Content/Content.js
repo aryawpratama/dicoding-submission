@@ -1,16 +1,16 @@
-import "./Content.css"
+import "./Content.css";
 
 class Content extends HTMLElement {
-    connectedCallback() {
-        this.data = this.getAttribute("data");
-        this.dataJSON = JSON.parse(this.data);
-        console.log(this.dataJSON);
-        this.contentLoop = '';
-        this.dataJSON.restaurants.map((e) => {
-            this.contentLoop += `
+  connectedCallback() {
+    this.data = this.getAttribute("data");
+    this.dataJSON = JSON.parse(this.data);
+    console.log(this.dataJSON);
+    this.contentLoop = "";
+    this.dataJSON.restaurants.map((e) => {
+      this.contentLoop += `
             <a href="#" id='${e.id}' class="card">
                 <div class="restopic">
-                    <img class="resto" src='${e.pictureId}' alt="Resto Picture">
+                    <img class="resto" src='${e.pictureId}' alt="${e.name}">
                 </div>
                 <div class="rate">
                     <img class="rating" src="/images/rating.png" alt="Rating">
@@ -24,12 +24,12 @@ class Content extends HTMLElement {
                     <p class='overflow'>${e.description}</p>
                 </div>
             </a>
-            `
-        })
-        this.render();
-    }
-    render() {
-        this.innerHTML = `
+            `;
+    });
+    this.render();
+  }
+  render() {
+    this.innerHTML = `
         <div class="container">
         <h1 class='title' id="explore">Explore</h1>
         <div class="search">
@@ -41,6 +41,6 @@ class Content extends HTMLElement {
         </div>
         </div>
         `;
-    }
+  }
 }
 customElements.define("content-component", Content);
