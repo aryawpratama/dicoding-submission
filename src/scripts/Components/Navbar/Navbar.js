@@ -1,10 +1,11 @@
-import "./Navbar.css";
+import './Navbar.css'
 class Navbar extends HTMLElement {
-  connectedCallback() {
-    this.logo = this.getAttribute("logo");
-    this.render();
+  connectedCallback () {
+    this.logo = this.getAttribute('logo')
+    this.render()
   }
-  render() {
+
+  render () {
     this.innerHTML = `
     <nav>
         <h1 class="logo">${this.logo}</h1>
@@ -32,7 +33,7 @@ class Navbar extends HTMLElement {
             </div>
         </div>
     </nav>
-    `;
+    `
   }
 }
-customElements.define("nav-bar", Navbar);
+customElements.define('nav-bar', Navbar)

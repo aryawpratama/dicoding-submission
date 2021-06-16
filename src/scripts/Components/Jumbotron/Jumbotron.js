@@ -1,14 +1,15 @@
-import "./Jumbotron.css";
+import './Jumbotron.css'
 class Jumbotron extends HTMLElement {
-    connectedCallback() {
-        this.background = this.getAttribute("bg");
-        this.render();
-        document.querySelector(
-            ".jumbo"
-        ).style.backgroundImage = `url(${this.background})`;
-    }
-    render() {
-        this.innerHTML = `
+  connectedCallback () {
+    this.background = this.getAttribute('bg')
+    this.render()
+    document.querySelector(
+      '.jumbo'
+    ).style.backgroundImage = `url(${this.background})`
+  }
+
+  render () {
+    this.innerHTML = `
         <div class="jumbo">
             <div class="jumbo-content">
                 <h1>Explore Your</h1>
@@ -16,7 +17,7 @@ class Jumbotron extends HTMLElement {
                 <a class="explorenow" href="#explore">Explore Now!</a>
             </div>
         </div>
-    `;
-    }
+    `
+  }
 }
-customElements.define("jumbotron-component", Jumbotron);
+customElements.define('jumbotron-component', Jumbotron)

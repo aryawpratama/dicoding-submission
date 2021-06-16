@@ -1,11 +1,11 @@
-import "./Content.css";
+import './Content.css'
 
 class Content extends HTMLElement {
-  connectedCallback() {
-    this.data = this.getAttribute("data");
-    this.dataJSON = JSON.parse(this.data);
-    console.log(this.dataJSON);
-    this.contentLoop = "";
+  connectedCallback () {
+    this.data = this.getAttribute('data')
+    this.dataJSON = JSON.parse(this.data)
+    console.log(this.dataJSON)
+    this.contentLoop = ''
     this.dataJSON.restaurants.map((e) => {
       this.contentLoop += `
             <a href="#" id='${e.id}' class="card">
@@ -24,11 +24,12 @@ class Content extends HTMLElement {
                     <p class='overflow'>${e.description}</p>
                 </div>
             </a>
-            `;
-    });
-    this.render();
+            `
+    })
+    this.render()
   }
-  render() {
+
+  render () {
     this.innerHTML = `
         <div class="container">
         <h1 class='title' id="explore">Explore</h1>
@@ -40,7 +41,7 @@ class Content extends HTMLElement {
         ${this.contentLoop}
         </div>
         </div>
-        `;
+        `
   }
 }
-customElements.define("content-component", Content);
+customElements.define('content-component', Content)
