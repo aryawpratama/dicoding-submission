@@ -1,4 +1,7 @@
 {
     "editor.formatOnSave": true,
-    "files.saveConflictResolution": "overwriteFileOnDisk"
+    "files.saveConflictResolution": "overwriteFileOnDisk",
+    "diffEditor.wordWrap": "on",
+    "editor.accessibilitySupport": "off",
+    "editor.wordWrap": "on"
 }

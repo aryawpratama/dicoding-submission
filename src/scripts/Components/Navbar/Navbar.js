@@ -8,11 +8,10 @@ class Navbar extends HTMLElement {
   render () {
     this.innerHTML = `
     <nav>
-        <h1 class="logo">${this.logo}</h1>
+        <a href="/" class="logo">${this.logo}</a>
         <div class="desktop">
             <ul class="navigation-desktop">
                 <li><a href="/">Home</a></li>
-                <li><a href="#explore">Explore</a></li>
                 <li><a href="#">Favorites</a></li>
                 <li><a href="https://github.com/aryawpratama">About Us</a></li>
             </ul>
@@ -26,7 +25,6 @@ class Navbar extends HTMLElement {
             <div class="dropdown">
                 <ul class="navigation-mobile">
                     <li><a href="/">Home</a></li>
-                    <li><a href="#explore">Explore</a></li>
                     <li><a href="#">Favorites</a></li>
                     <li><a href="https://github.com/aryawpratama">About Us</a></li>
                 </ul>

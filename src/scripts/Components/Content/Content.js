@@ -6,11 +6,11 @@ class Content extends HTMLElement {
     this.dataJSON = JSON.parse(this.data)
     console.log(this.dataJSON)
     this.contentLoop = ''
-    this.dataJSON.restaurants.map((e) => {
+    this.dataJSON.map((e) => {
       this.contentLoop += `
-            <a href="#" id='${e.id}' class="card">
+            <a href="#/detail/${e.id}" id='${e.id}' class="card">
                 <div class="restopic">
-                    <img class="resto" src='${e.pictureId}' alt="${e.name}">
+                    <img class="resto" src='https://restaurant-api.dicoding.dev/images/large/${e.pictureId}' alt="${e.name}">
                 </div>
                 <div class="rate">
                     <img class="rating" src="/images/rating.png" alt="Rating">
