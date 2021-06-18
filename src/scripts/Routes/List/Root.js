@@ -13,8 +13,8 @@ const Root = {
           const data = JSON.stringify(res.data.restaurants)
           document.querySelector("loader-component").remove()
           document.querySelector("#load").innerHTML = `
-          <jumbotron-component bg='images/heros/hero-image_2.jpg'></jumbotron-component>      
-          <content-component data='${data}'></content-component>
+        <jumbotron-component bg='images/heros/hero-image_2.jpg'></jumbotron-component>      
+        <content-component data='${data}'></content-component>
           `
         })
     }

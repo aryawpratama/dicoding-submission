@@ -1,6 +1,5 @@
 import axios from "axios"
 import UrlParser from "../Parser"
-
 const Detail = {
   async render () {
     return `
@@ -15,7 +14,7 @@ const Detail = {
       const stringify = JSON.stringify(data)
       document.querySelector("loader-component").remove()
       document.querySelector("#load").innerHTML = `
-      <detail-component data='${stringify}'></detail-component>
+        <detail-component data='${stringify}'></detail-component>
       `
     })
   }
