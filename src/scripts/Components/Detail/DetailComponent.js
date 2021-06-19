@@ -1,3 +1,4 @@
+import axios from "axios"
 import "./Detail.css"
 class Detail extends HTMLElement {
   connectedCallback () {
@@ -18,9 +19,43 @@ class Detail extends HTMLElement {
     <ul>
     `
     this.drink()
-    console.log(this.foodLoop)
+    // Review
+    this.reviewLoop = ``
+    this.review()
     // Render
     this.render()
+    this.modalBox()
+  }
+
+  modalBox () {
+    document.querySelector("#add-review").addEventListener("click", event => {
+      event.preventDefault()
+      document.querySelector(".modalbox").style.visibility = "visible"
+    })
+    document.querySelector("#close").addEventListener("click", event => {
+      event.preventDefault()
+      document.querySelector(".modalbox").style.visibility = "hidden"
+    })
+    document.querySelector("#submit").addEventListener("click", event => {
+      event.preventDefault()
+      this.nameValue = document.querySelector("#name").value
+      this.reviewValue = document.querySelector("#review").value
+      this.postData = {
+        id: this.parse.id,
+        name: this.nameValue,
+        review: this.reviewValue
+      }
+      axios({
+        url: "https://restaurant-api.dicoding.dev/review",
+        method: "post",
+        data: this.postData,
+        headers: {
+          "X-Auth-Token": 12345,
+          "Content-Type": "application/json"
+        }
+
+      })
+    })
   }
 
   category () {
@@ -47,6 +82,18 @@ class Detail extends HTMLElement {
     this.drinkLoop += `</ul>`
   }
 
+  review () {
+    this.parse.customerReviews.map(res => {
+      this.reviewLoop += `
+        <div class="review-card">
+          <h1>${res.name}</h1>
+          <h2>${res.date}</h2>
+          <p>${res.review}</p>
+        </div>
+`
+    })
+  }
+
   render () {
     this.innerHTML = `
       <jumbotron-component dataName='${this.parse.name}' dataAddr='${this.parse.address}' dataCity='${this.parse.city}' bg='https://restaurant-api.dicoding.dev/images/large/${this.parse.pictureId}'></jumbotron-component>
@@ -66,16 +113,42 @@ class Detail extends HTMLElement {
         </div>
         <div class="menu-detail">
           <h1>Menu</h1>
-          <div class="foods">
-          <h2>Food :</h2>
-          ${this.foodLoop}
-          </div>
-          <div class="drinks">
-          <h2>Drink :</h2>
-          ${this.drinkLoop}
+          <div class="menu-content">
+            <div class="foods">
+            <h2>Food :</h2>
+            ${this.foodLoop}
+            </div>
+            <div class="drinks">
+            <h2>Drink :</h2>
+            ${this.drinkLoop}
+            </div>
           </div>
         </div>
-
+        <div class="review-detail">
+          <h1>Review</h1>
+          <button id="add-review" class="add-review">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+          </button>
+          ${this.reviewLoop}
+        </div>
+        <div class="modalbox">
+          <div class="modalbox-card">
+          <button type="submit" id="close">
+          <i class="fa fa-times" aria-hidden="true"></i>
+          </button>
+          <h1>Add Review</h1>
+          <div class="modalbox-name">
+          <label for="name">Nama</label>
+          <input type="text" name="name" id="name">
+          </div>
+          <div class="modalbox-review">
+          <label for="review">Review</label>
+          <textarea name="review" id="review">
+          </textarea>
+          </div>
+          <button type="submit" id="submit">Submit</button>
+          </div>
+        </div>
       </div> 
       `
   }
