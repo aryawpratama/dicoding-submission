@@ -1,22 +1,25 @@
-#content {
+.content-detail {
     background: #fff;
-    border-radius: 30px 30px 0px 0px;
+    border-radius: 30px 30px 0 0;
     height: auto;
     position: relative;
     z-index: 2;
-    margin-top: -130px;
-    padding: 20px;
+    margin-top: -110px;
+    padding: 20px 20px 60px 20px;
     display: flex;
     flex-direction: column;
 }
-.rating {
+.content-detail h1 {
+    font-size: 25px;
+}
+.rating-detail {
     display: flex;
     flex-direction: row;
     padding: 20px;
     height: auto;
     width: auto;
 }
-.rating p {
+.rating-detail p {
     font-size: 20px;
     margin-top: 2px;
     margin-left: 10px;
@@ -27,10 +30,35 @@
 
 }
 .favorite {
-    border-radius: 10px;
+    border-radius: 90%;
     background-color: rgb(255, 255, 255);
     color: rgb(255, 6, 6);
-    padding: 10px 20px;
+    padding: 12px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -8px;
+    font-size: 15px;
+    position: absolute;
+    right: 35px;
+    border: 1px solid rgb(255, 6, 6);
+}
+.fa-heart{
+    margin-top: 2px;
+    font-size: 20px;
+    color: rgb(255, 6, 6);
+}
+.favorite:hover{
+    background-color: rgb(255, 0, 0);
+}
+.favorite:hover .fa-heart{
+    color: #fff;
+}
+.favorited {
+    border-radius: 90%;
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
+    padding: 10px 10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -38,17 +66,16 @@
     font-size: 15px;
     position: absolute;
     right: 35px;
-    border: solid 1px rgb(255, 6, 6);
+    border: 1px solid rgb(255, 6, 6);
 }
-.favorite:hover ~.favorite i{
-    color: #fff;
+.fa-fav{
+    margin-top: 2px;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
 }
-.favorite i {
-    color: rgb(255, 6, 6);
-    margin-right: 6px;
-    margin-left: -2px;
+.description {
+    margin-top: 10px;
 }
-.favorite:hover{
-    background-color: rgb(255, 6, 6);
-    color: #fff;
+.description p{
+    word-wrap: normal;
 }

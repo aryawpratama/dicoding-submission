@@ -19,7 +19,7 @@ class Jumbotron extends HTMLElement {
             <div class="jumbo-content">
                 <h1>Explore Your</h1>
                 <h1>Favourite Restaurant</h1>
-                <a class="explorenow" href="#explore">Explore Now!</a>
+                <a class="explorenow" href="#skip">Explore Now!</a>
             </div>
         </div>
     `
