@@ -5,7 +5,6 @@ class Content extends HTMLElement {
   connectedCallback () {
     this.data = this.getAttribute('data')
     this.dataJSON = JSON.parse(this.data)
-    console.log(this.dataJSON)
     this.contentLoop = ''
     this.contentLooper()
     this.render()

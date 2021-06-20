@@ -30,24 +30,26 @@ $('#main').on('click', function (e) {
 // Router
 window.addEventListener('hashchange', () => {
   Router.renderPage()
+  skipEventListener()
 })
 window.addEventListener('load', () => {
   Router.renderPage()
+  skipEventListener()
 })
 // Skip to content
-
-setTimeout(() => {
-  console.log(document.querySelectorAll('#skip-content'))
-  const skip = document.querySelectorAll('#skip-content')
-  skip.forEach(res => {
-    res.addEventListener('click', event => {
-      event.preventDefault()
-      const content = document.querySelector('#skip')
-      content.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-        inline: 'nearest'
+const skipEventListener = () => {
+  setTimeout(() => {
+    const skip = document.querySelectorAll('#skip-content')
+    skip.forEach(res => {
+      res.addEventListener('click', event => {
+        event.preventDefault()
+        const content = document.querySelector('#skip')
+        content.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest'
+        })
       })
     })
-  })
-}, 500)
+  }, 500)
+}

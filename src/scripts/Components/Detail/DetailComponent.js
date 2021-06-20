@@ -7,7 +7,6 @@ class Detail extends HTMLElement {
   connectedCallback () {
     this.data = this.getAttribute('data')
     this.parse = JSON.parse(this.data)
-    console.log(this.parse)
     // Categories
     this.categories = []
     this.category()
