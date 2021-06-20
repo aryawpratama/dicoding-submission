@@ -1,5 +1,5 @@
-import axios from "axios"
-import UrlParser from "../Parser"
+import axios from 'axios'
+import UrlParser from '../Parser'
 const Detail = {
   async render () {
     return `
@@ -12,8 +12,8 @@ const Detail = {
     axios.get(`https://restaurant-api.dicoding.dev/detail/${url.id}`).then(res => {
       const data = res.data.restaurant
       const stringify = JSON.stringify(data)
-      document.querySelector("loader-component").remove()
-      document.querySelector("#load").innerHTML = `
+      document.querySelector('loader-component').remove()
+      document.querySelector('#load').innerHTML = `
         <detail-component data='${stringify}'></detail-component>
       `
     })

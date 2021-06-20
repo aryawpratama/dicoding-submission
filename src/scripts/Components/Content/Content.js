@@ -9,10 +9,10 @@ class Content extends HTMLElement {
     this.contentLoop = ''
     this.contentLooper()
     this.render()
-    document.querySelector("#search").addEventListener("click", (event) => {
+    document.querySelector('#search').addEventListener('click', (event) => {
       this.search()
     })
-    document.querySelector("#input").addEventListener("keyup", (event) => {
+    document.querySelector('#input').addEventListener('keyup', (event) => {
       if (event.keyCode === 13) {
         this.search()
       }
@@ -20,21 +20,21 @@ class Content extends HTMLElement {
   }
 
   search () {
-    this.value = document.querySelector("#input").value
+    this.value = document.querySelector('#input').value
     axios.get(`https://restaurant-api.dicoding.dev/search?q=${this.value}`).then(res => {
       this.dataJSON = res.data.restaurants
       this.contentLoop = ''
       this.contentLooper()
       this.render()
-      document.querySelector("#search").addEventListener("click", (event) => {
+      document.querySelector('#search').addEventListener('click', (event) => {
         this.search()
       })
-      document.querySelector("#input").addEventListener("keyup", (event) => {
+      document.querySelector('#input').addEventListener('keyup', (event) => {
         if (event.keyCode === 13) {
           this.search()
         }
       })
-      document.querySelector(".back").addEventListener("click", (event) => {
+      document.querySelector('.back').addEventListener('click', (event) => {
         this.search()
       })
     })

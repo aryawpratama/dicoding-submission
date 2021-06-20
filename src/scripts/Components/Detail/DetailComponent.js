@@ -2,10 +2,10 @@ import axios from 'axios'
 import qs from 'qs'
 import Swal from 'sweetalert2'
 
-import "./Detail.css"
+import './Detail.css'
 class Detail extends HTMLElement {
   connectedCallback () {
-    this.data = this.getAttribute("data")
+    this.data = this.getAttribute('data')
     this.parse = JSON.parse(this.data)
     console.log(this.parse)
     // Categories
@@ -23,7 +23,7 @@ class Detail extends HTMLElement {
     `
     this.drink()
     // Review
-    this.reviewLoop = ``
+    this.reviewLoop = ''
     this.review()
     // Render
     this.render()
@@ -31,19 +31,19 @@ class Detail extends HTMLElement {
   }
 
   modalBox () {
-    document.querySelector("#add-review").addEventListener("click", event => {
+    document.querySelector('#add-review').addEventListener('click', event => {
       event.preventDefault()
-      document.querySelector(".modalbox").style.visibility = "visible"
+      document.querySelector('.modalbox').style.visibility = 'visible'
     })
-    document.querySelector("#close").addEventListener("click", event => {
+    document.querySelector('#close').addEventListener('click', event => {
       event.preventDefault()
-      document.querySelector(".modalbox").style.visibility = "hidden"
+      document.querySelector('.modalbox').style.visibility = 'hidden'
     })
-    document.querySelector("#submit").addEventListener("click", event => {
+    document.querySelector('#submit').addEventListener('click', event => {
       event.preventDefault()
-      document.querySelector(".modalbox").style.visibility = "hidden"
-      this.nameValue = document.querySelector("#name").value
-      this.reviewValue = document.querySelector("#review").value
+      document.querySelector('.modalbox').style.visibility = 'hidden'
+      this.nameValue = document.querySelector('#name').value
+      this.reviewValue = document.querySelector('#review').value
       this.postData = {
         id: this.parse.id,
         name: this.nameValue,
@@ -51,29 +51,29 @@ class Detail extends HTMLElement {
       }
       if (this.nameValue === '' || this.reviewValue === '') {
         Swal.fire({
-          icon: "error",
-          title: "Failed to add review",
-          text: "Name or review should be filled"
+          icon: 'error',
+          title: 'Failed to add review',
+          text: 'Name or review should be filled'
 
         })
       } else {
         axios({
-          url: "https://restaurant-api.dicoding.dev/review",
-          method: "post",
+          url: 'https://restaurant-api.dicoding.dev/review',
+          method: 'post',
           data: qs.stringify(this.postData),
           headers: {
-            "X-Auth-Token": 12345,
-            "Content-Type": "application/x-www-form-urlencoded"
+            'X-Auth-Token': 12345,
+            'Content-Type': 'application/x-www-form-urlencoded'
           }
 
         })
           .then(res => {
             Swal.fire({
-              icon: "success",
-              title: "Review Added"
+              icon: 'success',
+              title: 'Review Added'
             })
             this.review(res.data.customerReviews)
-            document.querySelector("#content-review").innerHTML = this.reviewLoop
+            document.querySelector('#content-review').innerHTML = this.reviewLoop
           })
           .catch()
       }
@@ -92,7 +92,7 @@ class Detail extends HTMLElement {
       <li>${res.name}</li>
       `
     })
-    this.foodLoop += `</ul>`
+    this.foodLoop += '</ul>'
   }
 
   drink () {
@@ -101,7 +101,7 @@ class Detail extends HTMLElement {
       <li>${res.name}</li>
       `
     })
-    this.drinkLoop += `</ul>`
+    this.drinkLoop += '</ul>'
   }
 
   review (params) {
@@ -116,7 +116,7 @@ class Detail extends HTMLElement {
   `
       })
     } else {
-      this.reviewLoop = ``
+      this.reviewLoop = ''
       params.map(res => {
         this.reviewLoop += `
         <div class="review-card">
@@ -189,4 +189,4 @@ class Detail extends HTMLElement {
       `
   }
 }
-customElements.define("detail-component", Detail)
+customElements.define('detail-component', Detail)

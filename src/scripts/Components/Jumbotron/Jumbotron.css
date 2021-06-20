@@ -47,6 +47,7 @@
     font-weight: bold;
     box-shadow: 9px 7px 70px -13px rgb(0, 0, 0);
     transition: 0.3s;
+    border: none;
 }
 
 .explorenow:hover {

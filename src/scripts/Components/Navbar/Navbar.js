@@ -8,6 +8,7 @@ class Navbar extends HTMLElement {
   render () {
     this.innerHTML = `
     <nav>
+        <button id="skip-content" class="skipcontent">Skip to Content</button>
         <a href="#/" class="logo">${this.logo}</a>
         <div class="desktop">
             <ul class="navigation-desktop">

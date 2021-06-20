@@ -12,7 +12,7 @@
         "sourceType": "module"
     },
     "rules": {
-        "array-callback-return": 0,
-        "quotes":"off"
+        "array-callback-return": 0
+
     }
 }

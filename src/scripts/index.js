@@ -22,7 +22,7 @@ $(document).on('scroll', function (e) {
   $('.dropdown').removeClass('down')
   $('.bar').removeClass('active')
 })
-$("#main").on('click', function (e) {
+$('#main').on('click', function (e) {
   $(this).removeClass('down')
   $('.dropdown').removeClass('down')
   $('.bar').removeClass('active')
@@ -35,12 +35,19 @@ window.addEventListener('load', () => {
   Router.renderPage()
 })
 // Skip to content
-document.querySelector(".skipcontent").addEventListener("click", event => {
-  event.preventDefault()
-  const content = document.querySelector("#skip")
-  content.scrollIntoView({
-    behavior: 'smooth',
-    block: 'start',
-    inline: 'nearest'
+
+setTimeout(() => {
+  console.log(document.querySelectorAll('#skip-content'))
+  const skip = document.querySelectorAll('#skip-content')
+  skip.forEach(res => {
+    res.addEventListener('click', event => {
+      event.preventDefault()
+      const content = document.querySelector('#skip')
+      content.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest'
+      })
+    })
   })
-})
+}, 500)

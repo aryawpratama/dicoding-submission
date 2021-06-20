@@ -2,10 +2,10 @@ import './Jumbotron.css'
 class Jumbotron extends HTMLElement {
   connectedCallback () {
     this.background = this.getAttribute('bg')
-    this.id = this.getAttribute("id")
-    this.name = this.getAttribute("dataName")
-    this.address = this.getAttribute("dataAddr")
-    this.city = this.getAttribute("dataCity")
+    this.id = this.getAttribute('id')
+    this.name = this.getAttribute('dataName')
+    this.address = this.getAttribute('dataAddr')
+    this.city = this.getAttribute('dataCity')
     this.render()
     document.querySelector(
       '.jumbo'
@@ -19,7 +19,7 @@ class Jumbotron extends HTMLElement {
             <div class="jumbo-content">
                 <h1>Explore Your</h1>
                 <h1>Favourite Restaurant</h1>
-                <a class="explorenow" href="#skip">Explore Now!</a>
+                <button class="explorenow" id="skip-content">Explore Now!</button>
             </div>
         </div>
     `
