@@ -1,6 +1,7 @@
 import 'regenerator-runtime'
 import '../styles/main.css'
 import $ from 'jquery'
+// Router
 import Router from './Routes/Router'
 // Components
 import './Components/Navbar/Navbar.js'
@@ -32,4 +33,14 @@ window.addEventListener('hashchange', () => {
 })
 window.addEventListener('load', () => {
   Router.renderPage()
+})
+// Skip to content
+document.querySelector(".skipcontent").addEventListener("click", event => {
+  event.preventDefault()
+  const content = document.querySelector("#skip")
+  content.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start',
+    inline: 'nearest'
+  })
 })

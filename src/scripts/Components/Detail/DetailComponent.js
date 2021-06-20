@@ -1,4 +1,7 @@
-import axios from "axios"
+import axios from 'axios'
+import qs from 'qs'
+import Swal from 'sweetalert2'
+
 import "./Detail.css"
 class Detail extends HTMLElement {
   connectedCallback () {
@@ -38,6 +41,7 @@ class Detail extends HTMLElement {
     })
     document.querySelector("#submit").addEventListener("click", event => {
       event.preventDefault()
+      document.querySelector(".modalbox").style.visibility = "hidden"
       this.nameValue = document.querySelector("#name").value
       this.reviewValue = document.querySelector("#review").value
       this.postData = {
@@ -45,16 +49,34 @@ class Detail extends HTMLElement {
         name: this.nameValue,
         review: this.reviewValue
       }
-      axios({
-        url: "https://restaurant-api.dicoding.dev/review",
-        method: "post",
-        data: this.postData,
-        headers: {
-          "X-Auth-Token": 12345,
-          "Content-Type": "application/json"
-        }
+      if (this.nameValue === '' || this.reviewValue === '') {
+        Swal.fire({
+          icon: "error",
+          title: "Failed to add review",
+          text: "Name or review should be filled"
 
-      })
+        })
+      } else {
+        axios({
+          url: "https://restaurant-api.dicoding.dev/review",
+          method: "post",
+          data: qs.stringify(this.postData),
+          headers: {
+            "X-Auth-Token": 12345,
+            "Content-Type": "application/x-www-form-urlencoded"
+          }
+
+        })
+          .then(res => {
+            Swal.fire({
+              icon: "success",
+              title: "Review Added"
+            })
+            this.review(res.data.customerReviews)
+            document.querySelector("#content-review").innerHTML = this.reviewLoop
+          })
+          .catch()
+      }
     })
   }
 
@@ -82,16 +104,29 @@ class Detail extends HTMLElement {
     this.drinkLoop += `</ul>`
   }
 
-  review () {
-    this.parse.customerReviews.map(res => {
-      this.reviewLoop += `
+  review (params) {
+    if (params === undefined) {
+      this.parse.customerReviews.map(res => {
+        this.reviewLoop += `
+          <div class="review-card">
+            <h1>${res.name}</h1>
+            <h2>${res.date}</h2>
+            <p>${res.review}</p>
+          </div>
+  `
+      })
+    } else {
+      this.reviewLoop = ``
+      params.map(res => {
+        this.reviewLoop += `
         <div class="review-card">
           <h1>${res.name}</h1>
           <h2>${res.date}</h2>
           <p>${res.review}</p>
         </div>
 `
-    })
+      })
+    }
   }
 
   render () {
@@ -129,7 +164,9 @@ class Detail extends HTMLElement {
           <button id="add-review" class="add-review">
             <i class="fa fa-plus" aria-hidden="true"></i>
           </button>
+          <div id="content-review">
           ${this.reviewLoop}
+          </div>
         </div>
         <div class="modalbox">
           <div class="modalbox-card">
@@ -139,12 +176,11 @@ class Detail extends HTMLElement {
           <h1>Add Review</h1>
           <div class="modalbox-name">
           <label for="name">Nama</label>
-          <input type="text" name="name" id="name">
+          <input required type="text" name="name" id="name">
           </div>
           <div class="modalbox-review">
           <label for="review">Review</label>
-          <textarea name="review" id="review">
-          </textarea>
+          <textarea required name="review" id="review"></textarea>
           </div>
           <button type="submit" id="submit">Submit</button>
           </div>

@@ -196,12 +196,15 @@ margin-top: 20px;
     display: flex;
     margin-top: 15px;
 }
-.modalbox-name input, .modalbox-review textarea{
-    flex-grow: 1;
-}
 .modalbox-review textarea{
     height: 80px;
     width: 178px;
+    flex-grow: 1;
+    padding: 2px;
+}
+.modalbox-name input{
+    flex-grow: 1;
+    padding: 0 2px;
 }
 .modalbox-name label, .modalbox-review label {
     flex-grow: 1;
