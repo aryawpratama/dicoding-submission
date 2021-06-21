@@ -22,8 +22,8 @@ const Root = {
           if (!err.response) {
             Swal.fire({
               icon: 'error',
-              title: 'Failed to load data',
-              text: 'Network Error'
+              title: 'Opss...',
+              text: 'This page is not available when offline'
 
             })
           } else {

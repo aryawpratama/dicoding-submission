@@ -23,8 +23,8 @@ const Detail = {
       if (!err.response) {
         Swal.fire({
           icon: 'error',
-          title: 'Failed to load data',
-          text: 'Network Error'
+          title: 'Opss...',
+          text: 'This page not available when offline'
 
         }).then(() => {
           window.location = url

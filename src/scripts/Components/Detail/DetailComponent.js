@@ -75,7 +75,7 @@ class Detail extends HTMLElement {
           text: 'We are trying to add your review'
         })
         axios({
-          url: `${CONFIG.BASE_API_URL}/review`,
+          url: `${CONFIG.BASE_API_URL}/revw`,
           method: 'post',
           data: qs.stringify(this.postData),
           headers: {
@@ -97,14 +97,17 @@ class Detail extends HTMLElement {
             if (!err.response) {
               Swal.fire({
                 icon: 'error',
-                title: 'Failed to add your review',
-                text: 'Network Error'
+                title: 'Opss...',
+                text: 'Can not add review when offline'
               })
             } else {
               Swal.fire({
                 icon: 'error',
-                title: 'Failed to add your review',
-                text: `${err.response.status}`
+                title: 'Opss...',
+                html: `
+                <p>Failed to add your review</p>
+                <p>Error : ${err.response.status}</p>
+                `
               })
             }
           })
