@@ -1,0 +1,37 @@
+.failed{
+    padding: 250px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.failed img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 20px;
+}
+.failed-back {
+    width: 80px;
+    height: 40px;
+    background: rgb(0, 110, 255);
+    text-decoration: none;
+    color: #fff;
+    margin-top: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 9px 7px 70px -13px rgb(0, 0, 0);
+    transition: 0.3s;
+    border: none;
+}
+
+.failed-back:hover {
+    transform: scale(1.05);
+}
+
+.failed-back:active {
+    transform: scale(0.95);
+    background: rgb(0, 75, 173);
+}

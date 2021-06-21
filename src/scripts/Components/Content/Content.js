@@ -4,18 +4,31 @@ import CONFIG from '../../Global/Config'
 class Content extends HTMLElement {
   connectedCallback () {
     this.data = this.getAttribute('data')
-    this.dataJSON = JSON.parse(this.data)
-    this.contentLoop = ''
-    this.contentLooper()
-    this.render()
-    document.querySelector('#search').addEventListener('click', (event) => {
-      this.search()
-    })
-    document.querySelector('#input').addEventListener('keyup', (event) => {
-      if (event.keyCode === 13) {
+    this.dataJSON = null
+    if (this.dataParsing()) {
+      this.contentLoop = ''
+      this.contentLooper()
+      this.render()
+      document.querySelector('#search').addEventListener('click', (event) => {
         this.search()
-      }
-    })
+      })
+      document.querySelector('#input').addEventListener('keyup', (event) => {
+        if (event.keyCode === 13) {
+          this.search()
+        }
+      })
+    } else {
+      this.render()
+    }
+  }
+
+  dataParsing () {
+    try {
+      this.dataJSON = JSON.parse(this.data)
+      return true
+    } catch (e) {
+      return false
+    }
   }
 
   search () {
@@ -63,35 +76,41 @@ class Content extends HTMLElement {
   }
 
   render () {
-    if (this.dataJSON.length === 0) {
-      this.innerHTML = `
-      <div class="container">
-      <h1 class='title' id="skip">Explore</h1>
-      <div class="search">
-        <input type="text" placeholder="Search Your Favourite Restaurant Here" id="input">
-        <button aria-label="search button" id="search"><i class="fa fa-search" aria-hidden="true"></i></button>
+    if (this.dataJSON !== null) {
+      if (this.dataJSON.length === 0) {
+        this.innerHTML = `
+        <div class="container">
+        <h1 class='title' id="skip">Explore</h1>
+        <div class="search">
+          <input type="text" placeholder="Search Your Favourite Restaurant Here" id="input">
+          <button aria-label="search button" id="search"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </div>
+      <div class="content">
+        <div class="card">
+          <h1 style="font-size:20px;">Data Tidak Ditemukan</h1>
+          <button class="back">Kembali</button>
+        </div>
       </div>
-    <div class="content">
-      <div class="card">
-        <h1 style="font-size:20px;">Data Tidak Ditemukan</h1>
-        <button class="back">Kembali</button>
       </div>
-    </div>
-    </div>
-      `
+        `
+      } else {
+        this.innerHTML = `
+          <div class="container">
+            <h1 class='title' id="skip">Explore</h1>
+            <div class="search">
+              <input type="text" placeholder="Search Your Favourite Restaurant Here" id="input">
+              <button aria-label="search button" id="search"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </div>
+          <div class="content">
+            ${this.contentLoop}
+          </div>
+          </div>
+          `
+      }
     } else {
       this.innerHTML = `
-        <div class="container">
-          <h1 class='title' id="skip">Explore</h1>
-          <div class="search">
-            <input type="text" placeholder="Search Your Favourite Restaurant Here" id="input">
-            <button aria-label="search button" id="search"><i class="fa fa-search" aria-hidden="true"></i></button>
-          </div>
-        <div class="content">
-          ${this.contentLoop}
-        </div>
-        </div>
-        `
+      <load-failed></load-failed>
+      `
     }
   }
 }

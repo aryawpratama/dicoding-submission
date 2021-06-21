@@ -10,6 +10,7 @@ import './Components/Content/Content.js'
 import './Components/Footer/Footer.js'
 import './Components/Detail/DetailComponent.js'
 import './Components/Loader/Load.js'
+import './Components/LoadFailed/LoadFailed.js'
 // Service Worker
 import SwRegister from './Utils/SwRegister.js'
 // Button onClick

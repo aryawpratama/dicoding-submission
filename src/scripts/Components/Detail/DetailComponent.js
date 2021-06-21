@@ -6,27 +6,40 @@ import './Detail.css'
 class Detail extends HTMLElement {
   connectedCallback () {
     this.data = this.getAttribute('data')
-    this.parse = JSON.parse(this.data)
+    this.parse = null
+    if (this.dataParsing()) {
     // Categories
-    this.categories = []
-    this.category()
-    this.join = this.categories.join()
-    // Menu Food
-    this.foodLoop = `
+      this.categories = []
+      this.category()
+      this.join = this.categories.join()
+      // Menu Food
+      this.foodLoop = `
     <ul>
     `
-    this.food()
-    // Menu Drink
-    this.drinkLoop = `
+      this.food()
+      // Menu Drink
+      this.drinkLoop = `
     <ul>
     `
-    this.drink()
-    // Review
-    this.reviewLoop = ''
-    this.review()
-    // Render
-    this.render()
-    this.modalBox()
+      this.drink()
+      // Review
+      this.reviewLoop = ''
+      this.review()
+      this.render()
+      this.modalBox()
+    } else {
+      // Render
+      this.render()
+    }
+  }
+
+  dataParsing () {
+    try {
+      this.parse = JSON.parse(this.data)
+      return true
+    } catch (e) {
+      return false
+    }
   }
 
   modalBox () {
@@ -41,12 +54,12 @@ class Detail extends HTMLElement {
     document.querySelector('#submit').addEventListener('click', event => {
       event.preventDefault()
       document.querySelector('.modalbox').style.visibility = 'hidden'
-      this.nameValue = document.querySelector('#name').value
-      this.reviewValue = document.querySelector('#review').value
+      this.inputName = document.querySelector('#name')
+      this.inputReview = document.querySelector('#review')
       this.postData = {
         id: this.parse.id,
-        name: this.nameValue,
-        review: this.reviewValue
+        name: this.inputName.value,
+        review: this.inputReview.value
       }
       if (this.nameValue === '' || this.reviewValue === '') {
         Swal.fire({
@@ -56,6 +69,11 @@ class Detail extends HTMLElement {
 
         })
       } else {
+        Swal.fire({
+          icon: 'info',
+          title: 'Please Wait',
+          text: 'We are trying to add your review'
+        })
         axios({
           url: `${CONFIG.BASE_URL}/review`,
           method: 'post',
@@ -73,8 +91,15 @@ class Detail extends HTMLElement {
             })
             this.review(res.data.customerReviews)
             document.querySelector('#content-review').innerHTML = this.reviewLoop
+            this.inputReview.value = ''
+            this.inputName.value = ''
+          }).catch(err => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Failed to add your review',
+              text: `${err.response.status}`
+            })
           })
-          .catch()
       }
     })
   }
@@ -129,11 +154,13 @@ class Detail extends HTMLElement {
   }
 
   render () {
-    this.innerHTML = `
+    if (this.parse !== null) {
+      console.log(true)
+      this.innerHTML = `
       <jumbotron-component dataName='${this.parse.name}' dataAddr='${this.parse.address}' dataCity='${this.parse.city}' bg='${CONFIG.BASE_IMAGE_URL}/${this.parse.pictureId}'></jumbotron-component>
       <div id="skip" class="content-detail">
         <div class="rating-detail">
-        <i class="fa fa-star" aria-hidden="true"></i>
+        <img class="rating" src="/images/rating.png" alt="Rating">
         <p>${this.parse.rating}</p>
         <button class='favorite'><i class="fa fa-heart" aria-hidden="true"></i></button>
         </div>
@@ -186,6 +213,12 @@ class Detail extends HTMLElement {
         </div>
       </div> 
       `
+    } else {
+      console.log(false)
+      this.innerHTML = `
+        <load-failed></load-failed>
+      `
+    }
   }
 }
 customElements.define('detail-component', Detail)
