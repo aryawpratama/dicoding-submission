@@ -3,6 +3,8 @@ import './Content.css'
 import CONFIG from '../../Global/Config'
 class Content extends HTMLElement {
   connectedCallback () {
+    this.url = window.location.href
+    console.log(this.url)
     this.data = this.getAttribute('data')
     this.dataJSON = null
     if (this.dataParsing()) {

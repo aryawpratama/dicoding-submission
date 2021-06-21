@@ -75,7 +75,7 @@ class Detail extends HTMLElement {
           text: 'We are trying to add your review'
         })
         axios({
-          url: `${CONFIG.BASE_URL}/review`,
+          url: `${CONFIG.BASE_API_URL}/review`,
           method: 'post',
           data: qs.stringify(this.postData),
           headers: {
@@ -94,11 +94,19 @@ class Detail extends HTMLElement {
             this.inputReview.value = ''
             this.inputName.value = ''
           }).catch(err => {
-            Swal.fire({
-              icon: 'error',
-              title: 'Failed to add your review',
-              text: `${err.response.status}`
-            })
+            if (!err.response) {
+              Swal.fire({
+                icon: 'error',
+                title: 'Failed to add your review',
+                text: 'Network Error'
+              })
+            } else {
+              Swal.fire({
+                icon: 'error',
+                title: 'Failed to add your review',
+                text: `${err.response.status}`
+              })
+            }
           })
       }
     })
@@ -155,7 +163,6 @@ class Detail extends HTMLElement {
 
   render () {
     if (this.parse !== null) {
-      console.log(true)
       this.innerHTML = `
       <jumbotron-component dataName='${this.parse.name}' dataAddr='${this.parse.address}' dataCity='${this.parse.city}' bg='${CONFIG.BASE_IMAGE_URL}/${this.parse.pictureId}'></jumbotron-component>
       <div id="skip" class="content-detail">
@@ -214,7 +221,6 @@ class Detail extends HTMLElement {
       </div> 
       `
     } else {
-      console.log(false)
       this.innerHTML = `
         <load-failed></load-failed>
       `

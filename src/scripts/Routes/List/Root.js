@@ -1,4 +1,6 @@
 import axios from 'axios'
+import Swal from 'sweetalert2'
+import CONFIG from '../../Global/Config'
 const Root = {
   async render () {
     return `
@@ -8,7 +10,7 @@ const Root = {
   },
   async afterRender () {
     const dataFetch = async () => {
-      axios.get('https://restaurant-api.dicoding.dev/list')
+      axios.get(`${CONFIG.BASE_API_URL}/list`)
         .then(res => {
           const data = JSON.stringify(res.data.restaurants)
           document.querySelector('loader-component').remove()
@@ -16,6 +18,21 @@ const Root = {
         <jumbotron-component bg='images/heros/hero-image_2.jpg'></jumbotron-component>      
         <content-component data='${data}'></content-component>
           `
+        }).catch(err => {
+          if (!err.response) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Failed to load data',
+              text: 'Network Error'
+
+            })
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Failed to load data',
+              text: `${err.response.status}`
+            })
+          }
         })
     }
     dataFetch()
