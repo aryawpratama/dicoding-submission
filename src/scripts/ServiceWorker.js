@@ -1,6 +1,6 @@
 import CacheHelper from './Utils/CacheHelper'
 import 'regenerator-runtime'
-const { assets } = global.ServiceWorkerOption
+const { assets } = global.serviceWorkerOption
 console.log(assets)
 
 self.addEventListener('install', (event) => {
