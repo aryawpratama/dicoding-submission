@@ -5,7 +5,7 @@ console.log(assets)
 
 self.addEventListener('install', (event) => {
   console.log('Installing Service Worker ...')
-  event.waitUntil(CacheHelper.cachingAppShell())
+  event.waitUntil(CacheHelper.cachingAppShell([...assets, './']))
 })
 
 self.addEventListener('activate', (event) => {
