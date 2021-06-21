@@ -1,6 +1,6 @@
 import axios from 'axios'
 import './Content.css'
-
+import CONFIG from '../../Global/Config'
 class Content extends HTMLElement {
   connectedCallback () {
     this.data = this.getAttribute('data')
@@ -20,7 +20,7 @@ class Content extends HTMLElement {
 
   search () {
     this.value = document.querySelector('#input').value
-    axios.get(`https://restaurant-api.dicoding.dev/search?q=${this.value}`).then(res => {
+    axios.get(`${CONFIG.BASE_URL}/search?q=${this.value}`).then(res => {
       this.dataJSON = res.data.restaurants
       this.contentLoop = ''
       this.contentLooper()
@@ -44,7 +44,7 @@ class Content extends HTMLElement {
       this.contentLoop += `
             <a href="#/detail/${e.id}" id='${e.id}' class="card">
                 <div class="restopic">
-                    <img class="resto" src='https://restaurant-api.dicoding.dev/images/large/${e.pictureId}' alt="${e.name}">
+                    <img class="resto" src='${CONFIG.BASE_IMAGE_URL}/${e.pictureId}' alt="${e.name}">
                 </div>
                 <div class="rate">
                     <img class="rating" src="/images/rating.png" alt="Rating">

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import qs from 'qs'
 import Swal from 'sweetalert2'
-
+import CONFIG from '../../Global/Config'
 import './Detail.css'
 class Detail extends HTMLElement {
   connectedCallback () {
@@ -57,11 +57,11 @@ class Detail extends HTMLElement {
         })
       } else {
         axios({
-          url: 'https://restaurant-api.dicoding.dev/review',
+          url: `${CONFIG.BASE_URL}/review`,
           method: 'post',
           data: qs.stringify(this.postData),
           headers: {
-            'X-Auth-Token': 12345,
+            'X-Auth-Token': CONFIG.API_KEY,
             'Content-Type': 'application/x-www-form-urlencoded'
           }
 
@@ -130,7 +130,7 @@ class Detail extends HTMLElement {
 
   render () {
     this.innerHTML = `
-      <jumbotron-component dataName='${this.parse.name}' dataAddr='${this.parse.address}' dataCity='${this.parse.city}' bg='https://restaurant-api.dicoding.dev/images/large/${this.parse.pictureId}'></jumbotron-component>
+      <jumbotron-component dataName='${this.parse.name}' dataAddr='${this.parse.address}' dataCity='${this.parse.city}' bg='${CONFIG.BASE_IMAGE_URL}/${this.parse.pictureId}'></jumbotron-component>
       <div id="skip" class="content-detail">
         <div class="rating-detail">
         <i class="fa fa-star" aria-hidden="true"></i>

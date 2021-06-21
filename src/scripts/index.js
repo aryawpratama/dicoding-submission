@@ -10,6 +10,8 @@ import './Components/Content/Content.js'
 import './Components/Footer/Footer.js'
 import './Components/Detail/DetailComponent.js'
 import './Components/Loader/Load.js'
+// Service Worker
+import SwRegister from './Utils/SwRegister.js'
 // Button onClick
 $('.bar').on('click', function (e) {
   e.preventDefault()
@@ -35,6 +37,7 @@ window.addEventListener('hashchange', () => {
 window.addEventListener('load', () => {
   Router.renderPage()
   skipEventListener()
+  SwRegister()
 })
 // Skip to content
 const skipEventListener = () => {
