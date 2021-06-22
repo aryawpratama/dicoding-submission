@@ -1,25 +1,21 @@
-import axios from 'axios'
-import './Content.css'
 import CONFIG from '../../Global/Config'
-class Content extends HTMLElement {
+// CSS From Content
+import './Favorite.css'
+class Favorite extends HTMLElement {
   connectedCallback () {
     this.data = this.getAttribute('data')
     this.dataJSON = null
+    this.url = window.location.href.split('/')[1] + '/#'
     if (this.dataParsing()) {
       this.contentLoop = ''
       this.contentLooper()
       this.render()
-      document.querySelector('#search').addEventListener('click', (event) => {
-        this.search()
-      })
-      document.querySelector('#input').addEventListener('keyup', (event) => {
-        if (event.keyCode === 13) {
-          this.search()
-        }
-      })
     } else {
       this.render()
     }
+    document.querySelector('.back').addEventListener('click', (event) => {
+      window.location = this.url
+    })
   }
 
   dataParsing () {
@@ -29,27 +25,6 @@ class Content extends HTMLElement {
     } catch (e) {
       return false
     }
-  }
-
-  search () {
-    this.value = document.querySelector('#input').value
-    axios.get(`${CONFIG.BASE_URL}/search?q=${this.value}`).then(res => {
-      this.dataJSON = res.data.restaurants
-      this.contentLoop = ''
-      this.contentLooper()
-      this.render()
-      document.querySelector('#search').addEventListener('click', (event) => {
-        this.search()
-      })
-      document.querySelector('#input').addEventListener('keyup', (event) => {
-        if (event.keyCode === 13) {
-          this.search()
-        }
-      })
-      document.querySelector('.back').addEventListener('click', (event) => {
-        this.search()
-      })
-    })
   }
 
   contentLooper () {
@@ -80,12 +55,8 @@ class Content extends HTMLElement {
       if (this.dataJSON.length === 0) {
         this.innerHTML = `
         <div class="container">
-        <h1 class='title' id="skip">Explore</h1>
-        <div class="search">
-          <input type="text" placeholder="Search Your Favourite Restaurant Here" id="input">
-          <button aria-label="search button" id="search"><i class="fa fa-search" aria-hidden="true"></i></button>
-        </div>
-      <div class="content">
+        <h1 class='title-fav'>Favorite</h1>
+      <div class="content" id="skip">
         <div class="card">
           <h1 style="font-size:20px;">Data not found</h1>
           <button class="back">Back</button>
@@ -96,12 +67,9 @@ class Content extends HTMLElement {
       } else {
         this.innerHTML = `
           <div class="container">
-            <h1 class='title' id="skip">Explore</h1>
-            <div class="search">
-              <input type="text" placeholder="Search Your Favourite Restaurant Here" id="input">
-              <button aria-label="search button" id="search"><i class="fa fa-search" aria-hidden="true"></i></button>
-            </div>
-          <div class="content">
+            <h1 class='title-fav' id="skip">Favorite</h1>
+      <div class="content" id="skip"id="skip">
+      <div class="content" >
             ${this.contentLoop}
           </div>
           </div>
@@ -114,4 +82,4 @@ class Content extends HTMLElement {
     }
   }
 }
-customElements.define('content-component', Content)
+customElements.define('fav-component', Favorite)

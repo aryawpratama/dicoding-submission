@@ -13,7 +13,7 @@ class Navbar extends HTMLElement {
         <div class="desktop">
             <ul class="navigation-desktop">
                 <li><a href="#/">Home</a></li>
-                <li><a href="#">Favorites</a></li>
+                <li><a href="#/favorite">Favorites</a></li>
                 <li><a href="https://github.com/aryawpratama">About Us</a></li>
             </ul>
         </div>
@@ -26,7 +26,7 @@ class Navbar extends HTMLElement {
             <div class="dropdown">
                 <ul class="navigation-mobile">
                     <li><a href="#/">Home</a></li>
-                    <li><a href="#">Favorites</a></li>
+                    <li><a href="#/favorite">Favorites</a></li>
                     <li><a href="https://github.com/aryawpratama">About Us</a></li>
                 </ul>
             </div>

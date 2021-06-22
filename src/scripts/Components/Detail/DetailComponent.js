@@ -1,38 +1,75 @@
 import axios from 'axios'
 import qs from 'qs'
 import Swal from 'sweetalert2'
+import $ from 'jquery'
+import { DBController } from '../../Data/FavouriteIDB'
 import CONFIG from '../../Global/Config'
 import './Detail.css'
 class Detail extends HTMLElement {
   connectedCallback () {
     this.data = this.getAttribute('data')
     this.parse = null
+    this.indexedDB = { id: null }
     if (this.dataParsing()) {
-    // Categories
+      // Categories
+      this.databaseFetch()
       this.categories = []
       this.category()
       this.join = this.categories.join()
       // Menu Food
       this.foodLoop = `
-    <ul>
-    `
+      <ul>
+      `
       this.food()
       // Menu Drink
       this.drinkLoop = `
-    <ul>
-    `
+      <ul>
+      `
       this.drink()
       // Review
       this.reviewLoop = ''
       this.review()
       this.render()
       this.modalBox()
+      this.favoriteButton()
     } else {
       // Render
       this.render()
     }
   }
 
+  databaseFetch () {
+    DBController.get(this.parse.id).then(res => {
+      if (res !== undefined) {
+        this.indexedDB = res
+        if (this.parse.id === this.indexedDB.id) {
+          $('#favorite').removeClass('favorite')
+          $('#favorite').addClass('favorited')
+        }
+      } else {
+        this.indexedDB = { id: null }
+      }
+    })
+  }
+
+  favoriteButton () {
+    this.favorite = document.querySelector('#favorite')
+    this.favorite.addEventListener('click', event => {
+      event.preventDefault()
+      if (this.indexedDB.id === this.parse.id) {
+        DBController.delete(this.indexedDB.id)
+        $('#favorite').removeClass('favorited')
+        $('#favorite').addClass('favorite')
+      } else {
+        DBController.add(this.parse)
+        $('#favorite').removeClass('favorite')
+        $('#favorite').addClass('favorited')
+      }
+      this.databaseFetch()
+    })
+  }
+
+  //
   dataParsing () {
     try {
       this.parse = JSON.parse(this.data)
@@ -172,7 +209,7 @@ class Detail extends HTMLElement {
         <div class="rating-detail">
         <img class="rating" src="/images/rating.png" alt="Rating">
         <p>${this.parse.rating}</p>
-        <button class='favorite'><i class="fa fa-heart" aria-hidden="true"></i></button>
+        <button class='favorite' id="favorite"><i class="fa fa-heart" aria-hidden="true"></i></button>
         </div>
         <div class="categories">
           <h1>Categories</h1>

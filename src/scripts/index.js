@@ -11,8 +11,12 @@ import './Components/Footer/Footer.js'
 import './Components/Detail/DetailComponent.js'
 import './Components/Loader/Load.js'
 import './Components/LoadFailed/LoadFailed.js'
+import './Components/Favorite/FavoriteComponent.js'
 // Service Worker
 import SwRegister from './Utils/SwRegister.js'
+import { DBInit } from './Data/FavouriteIDB'
+// DB Init
+DBInit()
 // Button onClick
 $('.bar').on('click', function (e) {
   e.preventDefault()
@@ -26,6 +30,11 @@ $(document).on('scroll', function (e) {
   $('.bar').removeClass('active')
 })
 $('#main').on('click', function (e) {
+  $(this).removeClass('down')
+  $('.dropdown').removeClass('down')
+  $('.bar').removeClass('active')
+})
+$('.navigation-mobile').on('click', function (e) {
   $(this).removeClass('down')
   $('.dropdown').removeClass('down')
   $('.bar').removeClass('active')

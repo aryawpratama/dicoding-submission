@@ -41,8 +41,9 @@
     position: absolute;
     right: 35px;
     border: 1px solid rgb(255, 6, 6);
+    transition: all 0.3s;
 }
-.fa-heart{
+.favorite i {
     margin-top: 2px;
     font-size: 20px;
     color: rgb(255, 6, 6);
@@ -53,6 +54,11 @@
 .favorite:hover .fa-heart{
     color: #fff;
 }
+.favorited i {
+    margin-top: 2px;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+}
 .favorited {
     border-radius: 90%;
     background-color: rgb(255, 0, 0);
@@ -61,11 +67,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: -4px;
+    margin-top: -7px;
     font-size: 15px;
     position: absolute;
     right: 35px;
     border: 1px solid rgb(255, 6, 6);
+    transition: all 0.3s;
 }
 .fa-fav{
     margin-top: 2px;
@@ -141,8 +148,8 @@ margin-top: 20px;
     color:#fff;
 }
 .add-review{
-    width: 45px;
-    height: 45px;
+    width: 46px;
+    height: 46px;
     background: rgb(0, 110, 255);
     text-decoration: none;
     color: #fff;
@@ -157,13 +164,13 @@ margin-top: 20px;
     border: none;
     position: absolute;
     right: 20px;
-    margin-top: -4px;
+    margin-top: -6px;
 }
 .add-review:hover{
     transform: scale(1.05);
 }
 .add-review:active{
-    transform: scale(0.95);
+    transform: scale(0.97);
     background: rgb(0, 75, 173);
 }
 .modalbox{
