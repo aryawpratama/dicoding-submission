@@ -1,35 +1,59 @@
-{
+  {
+    "name": "Aria Resto and Cafe",
     "short_name": "Aria Resto",
-    "name": "Aria Resto",
+    "description": "Search your favourite restaurant and cafe",
+    "start_url": "/index.html",
     "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#000000",
     "icons": [
       {
-        "src": "images/icon/aria-48.png",
-        "sizes": "48x48",
-        "type": "image/png"
+        "src": "/icons/aria-72.png",
+        "sizes": "72x72",
+        "type": "image/png",
+        "purpose": "any maskable"
       },
       {
-        "src": "images/icon/aria-96.png",
+        "src": "/icons/aria-96.png",
         "sizes": "96x96",
-        "type": "image/png"
+        "type": "image/png",
+        "purpose": "any maskable"
       },
       {
-        "src": "images/icon/aria-144.png",
+        "src": "/icons/aria-128.png",
+        "sizes": "128x128",
+        "type": "image/png",
+        "purpose": "any maskable"
+      },
+      {
+        "src": "/icons/aria-144.png",
         "sizes": "144x144",
-        "type": "image/png"
+        "type": "image/png",
+        "purpose": "any maskable"
       },
       {
-        "src": "images/icon/aria-196.png",
-        "sizes": "196x196",
-        "type": "image/png"
+        "src": "/icons/aria-152.png",
+        "sizes": "152x152",
+        "type": "image/png",
+        "purpose": "any maskable"
       },
       {
-        "src": "images/icon/aria-384.png",
+        "src": "/icons/aria-192.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "any maskable"
+      },
+      {
+        "src": "/icons/aria-384.png",
         "sizes": "384x384",
-        "type": "image/png"
+        "type": "image/png",
+        "purpose": "any maskable"
+      },
+      {
+        "src": "/icons/aria-512.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "any maskable"
       }
-    ],
-    "start_url": "index.html?launcher=true",
-    "theme_color": "#000000",
-    "background_color": "#EEEEEE"
+    ]
   }
