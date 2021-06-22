@@ -48,12 +48,6 @@
     font-size: 20px;
     color: rgb(255, 6, 6);
 }
-.favorite:hover{
-    background-color: rgb(255, 0, 0);
-}
-.favorite:hover .fa-heart{
-    color: #fff;
-}
 .favorited i {
     margin-top: 2px;
     font-size: 20px;
@@ -275,5 +269,11 @@ margin-top: 20px;
     }
     .description p {
         margin-top: 10px;
+    }
+    .favorite:hover{
+        background-color: rgb(255, 0, 0);
+    }
+    .favorite:hover .fa-heart{
+        color: #fff;
     }
 }
