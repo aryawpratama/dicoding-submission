@@ -33,7 +33,7 @@ class Content extends HTMLElement {
 
   search () {
     this.value = document.querySelector('#input').value
-    axios.get(`${CONFIG.BASE_URL}/search?q=${this.value}`).then(res => {
+    axios.get(`${CONFIG.BASE_API_URL}/search?q=${this.value}`).then(res => {
       this.dataJSON = res.data.restaurants
       this.contentLoop = ''
       this.contentLooper()
