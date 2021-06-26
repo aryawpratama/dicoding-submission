@@ -112,7 +112,7 @@ class Detail extends HTMLElement {
           text: 'We are trying to add your review'
         })
         axios({
-          url: `${CONFIG.BASE_API_URL}/revw`,
+          url: `${CONFIG.BASE_API_URL}/review`,
           method: 'post',
           data: qs.stringify(this.postData),
           headers: {
