@@ -1,8 +1,8 @@
-const sum = (a, b) => a + b
-
-describe('A Sample Test for Sum', () => {
-  it('should return a + b value', () => {
-    expect(sum(2, 3))
-      .toEqual(5)
+import '../src/scripts/Components/Detail/DetailComponent'
+describe("Like a restaurant", () => {
+  it("Should show the like button", () => {
+    document.body.innerHTML=`<detail-component></detail-component>`
+    console.log(document.body.innerHTML)
+    expect()
   })
 })
