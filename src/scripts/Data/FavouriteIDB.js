@@ -10,36 +10,19 @@ const DBInit = () => {
 }
 const DBController = {
   async get (id) {
-    // console.log(id)
-    if (id !== null) {
-      return (await db).get(CONFIG.OBJECT_STORE_NAME, id)
-    } else {
-      return false
-    }
+    return (await db).get(CONFIG.OBJECT_STORE_NAME, id)
   },
   async getAll () {
     return (await db).getAll(CONFIG.OBJECT_STORE_NAME)
   },
   async add (params) {
-    if (params !== null) {
-      return (await db).add(CONFIG.OBJECT_STORE_NAME, params)
-    } else {
-      return false
-    }
+    return (await db).add(CONFIG.OBJECT_STORE_NAME, params)
   },
   async put (params) {
-    if (params !== null) {
-      return (await db).put(CONFIG.OBJECT_STORE_NAME, params)
-    } else {
-      return false
-    }
+    return (await db).put(CONFIG.OBJECT_STORE_NAME, params)
   },
   async delete (id) {
-    if (id !== null) {
-      return (await db).delete(CONFIG.OBJECT_STORE_NAME, id)
-    } else {
-      return false
-    }
+    return (await db).delete(CONFIG.OBJECT_STORE_NAME, id)
   }
 }
 export { DBController, DBInit }
