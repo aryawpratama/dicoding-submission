@@ -57,10 +57,14 @@ class Content extends HTMLElement {
       this.contentLoop += `
             <a href="#/detail/${e.id}" id='${e.id}' class="card">
                 <div class="restopic">
-                    <img class="resto" src='${CONFIG.BASE_IMAGE_URL}/${e.pictureId}' alt="${e.name}">
+                    <img class="resto lazyload" height="220" width="270" src='${CONFIG.BASE_IMAGE_URL}/${e.pictureId}' alt="${e.name}">
                 </div>
                 <div class="rate">
-                    <img class="rating" src="/images/rating.png" alt="Rating">
+                    <picture>
+                      <source type="image/webp" srcset="./images/rating.webp">
+                      <source type="image/jpeg" srcset="./images/rating.png">
+                      <img class="rating" src="/images/rating.png" alt="Rating">
+                    </picture>
                     <p>${e.rating}</p>
                 </div>
                 <div class="identity">

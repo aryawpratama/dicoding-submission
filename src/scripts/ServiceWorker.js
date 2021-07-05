@@ -1,7 +1,7 @@
 import CacheHelper from './Utils/CacheHelper'
 import 'regenerator-runtime'
 const { assets } = global.serviceWorkerOption
-console.log(assets)
+// console.log(assets)
 
 self.addEventListener('install', (event) => {
   event.waitUntil(CacheHelper.cachingAppShell([...assets, './']))

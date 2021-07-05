@@ -4,6 +4,7 @@ import CONFIG from '../../Global/Config'
 const Root = {
   async render () {
     return `
+    <jumbotron-component></jumbotron-component>      
     <loader-component></loader-component>
     <div id="load"></div>
     `
@@ -15,7 +16,6 @@ const Root = {
           const data = JSON.stringify(res.data.restaurants)
           document.querySelector('loader-component').remove()
           document.querySelector('#load').innerHTML = `
-        <jumbotron-component bg='images/heros/hero-image_2.jpg'></jumbotron-component>      
         <content-component data='${data}'></content-component>
           `
         }).catch(err => {

@@ -1,8 +1,6 @@
 import axios from 'axios'
 import qs from 'qs'
 import Swal from 'sweetalert2'
-import $ from 'jquery'
-import { DBController } from '../../Data/FavouriteIDB'
 import CONFIG from '../../Global/Config'
 import './Detail.css'
 class Detail extends HTMLElement {
@@ -12,7 +10,7 @@ class Detail extends HTMLElement {
     this.indexedDB = { id: null }
     if (this.dataParsing()) {
       // Categories
-      this.databaseFetch()
+      // this.databaseFetch()
       this.categories = []
       this.category()
       this.join = this.categories.join()
@@ -31,45 +29,44 @@ class Detail extends HTMLElement {
       this.review()
       this.render()
       this.modalBox()
-      this.favoriteButton()
+      // this.favoriteButton()
     } else {
       // Render
       this.render()
     }
   }
 
-  databaseFetch () {
-    DBController.get(this.parse.id).then(res => {
-      if (res !== undefined) {
-        this.indexedDB = res
-        if (this.parse.id === this.indexedDB.id) {
-          $('#favorite').removeClass('favorite')
-          $('#favorite').addClass('favorited')
-        }
-      } else {
-        this.indexedDB = { id: null }
-      }
-    })
-  }
+  // databaseFetch () {
+  //   DBController.get(this.parse.id).then(res => {
+  //     if (res !== undefined) {
+  //       this.indexedDB = res
+  //       if (this.parse.id === this.indexedDB.id) {
+  //         $('#favorite').removeClass('favorite')
+  //         $('#favorite').addClass('favorited')
+  //       }
+  //     } else {
+  //       this.indexedDB = { id: null }
+  //     }
+  //   })
+  // }
 
-  favoriteButton () {
-    this.favorite = document.querySelector('#favorite')
-    this.favorite.addEventListener('click', event => {
-      event.preventDefault()
-      if (this.indexedDB.id === this.parse.id) {
-        DBController.delete(this.indexedDB.id)
-        $('#favorite').removeClass('favorited')
-        $('#favorite').addClass('favorite')
-      } else {
-        DBController.add(this.parse)
-        $('#favorite').removeClass('favorite')
-        $('#favorite').addClass('favorited')
-      }
-      this.databaseFetch()
-    })
-  }
+  // favoriteButton () {
+  //   this.favorite = document.querySelector('#favorite')
+  //   this.favorite.addEventListener('click', event => {
+  //     event.preventDefault()
+  //     if (this.indexedDB.id === this.parse.id) {
+  //       DBController.delete(this.indexedDB.id)
+  //       $('#favorite').removeClass('favorited')
+  //       $('#favorite').addClass('favorite')
+  //     } else {
+  //       DBController.add(this.parse)
+  //       $('#favorite').removeClass('favorite')
+  //       $('#favorite').addClass('favorited')
+  //     }
+  //     this.databaseFetch()
+  //   })
+  // }
 
-  //
   dataParsing () {
     try {
       this.parse = JSON.parse(this.data)
@@ -204,12 +201,12 @@ class Detail extends HTMLElement {
   render () {
     if (this.parse !== null) {
       this.innerHTML = `
-      <jumbotron-component dataName='${this.parse.name}' dataAddr='${this.parse.address}' dataCity='${this.parse.city}' bg='${CONFIG.BASE_IMAGE_URL}/${this.parse.pictureId}'></jumbotron-component>
+      <jumbotron-component dataName='${this.parse.name}' dataAddr='${this.parse.address}' dataCity='${this.parse.city}' idPicture="${this.parse.pictureId}"></jumbotron-component>
       <div id="skip" class="content-detail">
         <div class="rating-detail">
         <img class="rating" src="/images/rating.png" alt="Rating">
         <p>${this.parse.rating}</p>
-        <button class='favorite' id="favorite"><i class="fa fa-heart" aria-hidden="true"></i></button>
+        <fav-button data='${this.data}'></fav-button>
         </div>
         <div class="categories">
           <h1>Categories</h1>

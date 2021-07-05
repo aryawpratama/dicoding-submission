@@ -1,6 +1,8 @@
 import 'regenerator-runtime'
 import '../styles/main.css'
 import $ from 'jquery'
+import 'lazysizes'
+import 'lazysizes/plugins/parent-fit/ls.parent-fit'
 // Router
 import Router from './Routes/Router'
 // Components
@@ -12,6 +14,7 @@ import './Components/Detail/DetailComponent.js'
 import './Components/Loader/Load.js'
 import './Components/LoadFailed/LoadFailed.js'
 import './Components/Favorite/FavoriteComponent.js'
+import './Components/FavoriteButton/FavoriteButton.js'
 // Service Worker
 import SwRegister from './Utils/SwRegister.js'
 import { DBInit } from './Data/FavouriteIDB'
