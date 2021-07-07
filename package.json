@@ -8,7 +8,9 @@
     "build": "webpack --config webpack.prod.js",
     "test": "karma start",
     "lint": "eslint ./src",
-    "lint:fix": "eslint ./src --fix"
+    "lint:fix": "eslint ./src --fix",
+    "build-image": "node Sharp.js",
+    "e2e": "codeceptjs run --steps"
   },
   "keywords": [],
   "author": "aryawpratama <aryawpratama@gmail.com>",
@@ -17,6 +19,7 @@
     "@babel/core": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
     "babel-loader": "^8.1.0",
+    "codeceptjs": "^3.0.7",
     "copy-webpack-plugin": "^6.0.3",
     "css-loader": "^5.2.4",
     "eslint": "^7.28.0",
@@ -34,6 +37,7 @@
     "karma-jasmine": "^3.3.1",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^4.0.2",
+    "puppeteer": "^10.1.0",
     "sharp": "^0.28.3",
     "style-loader": "^1.2.1",
     "webpack": "^4.43.0",

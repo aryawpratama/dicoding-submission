@@ -57,7 +57,7 @@ class Favorite extends HTMLElement {
         <div class="container">
         <h1 class='title-fav'>Favorite</h1>
       <div class="content" id="skip">
-        <div class="card">
+        <div id="not-found" class="card">
           <h1 style="font-size:20px;">Data not found</h1>
           <button class="back">Back</button>
         </div>

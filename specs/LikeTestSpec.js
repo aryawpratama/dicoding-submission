@@ -10,9 +10,10 @@ const data = {
 }
 const str = JSON.stringify(data)
 DBInit()
-describe('Like a restaurant', () => {
-  beforeEach(() => {
+describe('Favorite a restaurant', () => {
+  beforeEach(async () => {
     document.body.innerHTML = `<fav-button data='${str}'></fav-button>`
+    await DBController.delete(data.id)
   })
   it('Should show the custom element favorite button', () => {
     expect(document.querySelector('#favorite')).toBeTruthy()
@@ -20,9 +21,9 @@ describe('Like a restaurant', () => {
   it('Should show the favorite button', () => {
     expect(document.getElementsByClassName('favorite')).toBeTruthy()
   })
-  it('Should show the favorited button', () => {
+  it('Should show the favorited button', async () => {
     document.querySelector('#favorite').dispatchEvent(new Event('click'))
-    DBController.get(data.id).then((res) => {
+    await DBController.get(data.id).then((res) => {
       let favorited = null
       favorited = res
       expect(favorited).toEqual(data)
@@ -32,7 +33,7 @@ describe('Like a restaurant', () => {
         expect(err).toThrowError()
       })
   })
-  afterEach(() => {
-    DBController.delete(data.id)
+  afterAll(async () => {
+    await DBController.delete(data.id)
   })
 })

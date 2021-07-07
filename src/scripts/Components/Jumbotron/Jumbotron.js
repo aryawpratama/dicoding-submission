@@ -14,8 +14,10 @@ class Jumbotron extends HTMLElement {
       this.innerHTML = `
         <div class="jumbo">
         <picture>
-          <source type="image/webp" srcset="./images/heros/hero-image_2.webp">
-          <source type="image/jpeg" srcset="./images/heros/hero-image_2.jpg">
+          <source media="(max-width:500px)" type="image/webp" srcset="./images/heros/hero-image_2-small.webp">
+          <source media="(max-width:500px)" type="image/jpeg" srcset="./images/heros/hero-image_2-small.jpg">
+          <source type="image/webp" srcset="./images/heros/hero-image_2-large.webp">
+          <source type="image/jpeg" srcset="./images/heros/hero-image_2-large.jpg">
           <img class="jumbo-bg" src="./images/heros/hero-image_2.jpg" alt="Jumbotron">
         </picture>
             <div class="jumbo-content">
@@ -29,7 +31,7 @@ class Jumbotron extends HTMLElement {
       this.innerHTML = `
         <div class="jumbo">
         <picture>
-        <source type="image/jpeg" srcset="${CONFIG.BASE_IMAGE_URL_LARGE}/${this.id}">
+        <source media="(max-width:500px)" type="image/jpeg" srcset="${CONFIG.BASE_IMAGE_URL_MEDIUM}/${this.id}">
                   <img class="jumbo-bg" src="${CONFIG.BASE_IMAGE_URL_LARGE}/${this.id}" alt="Jumbotron">
         </picture>
             <div class="jumbo-detail-content">
