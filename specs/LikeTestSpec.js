@@ -9,9 +9,9 @@ const data = {
   rating: 4.2
 }
 const str = JSON.stringify(data)
-DBInit()
 describe('Favorite a restaurant', () => {
   beforeEach(async () => {
+    DBInit()
     document.body.innerHTML = `<fav-button data='${str}'></fav-button>`
     await DBController.delete(data.id)
   })
@@ -33,7 +33,26 @@ describe('Favorite a restaurant', () => {
         expect(err).toThrowError()
       })
   })
-  afterAll(async () => {
-    await DBController.delete(data.id)
+})
+describe('Unfavorite a restaurant', () => {
+  beforeEach(() => {
+    document.body.innerHTML = `<fav-button data='${str}'></fav-button>`
+  })
+  it('Should show the unfavorite button', () => {
+    expect(document.getElementsByClassName('favorited')).toBeTruthy()
+  })
+  it('Should show the favorite button', async () => {
+    await DBController.delete(data.id).then(() => {
+      document.querySelector('#favorite').dispatchEvent(new Event('click'))
+      document.querySelector('#favorite').dispatchEvent(new Event('click'))
+      DBController.get(data.id).then((res) => {
+        let favorited = null
+        favorited = res
+        expect(favorited).not.toEqual(data)
+      })
+        .catch((err) => {
+          expect(err).toThrowError()
+        })
+    })
   })
 })

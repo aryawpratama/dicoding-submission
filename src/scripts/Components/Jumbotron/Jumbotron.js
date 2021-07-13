@@ -15,10 +15,8 @@ class Jumbotron extends HTMLElement {
         <div class="jumbo">
         <picture>
           <source media="(max-width:500px)" type="image/webp" srcset="./images/heros/hero-image_2-small.webp">
-          <source media="(max-width:500px)" type="image/jpeg" srcset="./images/heros/hero-image_2-small.jpg">
           <source type="image/webp" srcset="./images/heros/hero-image_2-large.webp">
-          <source type="image/jpeg" srcset="./images/heros/hero-image_2-large.jpg">
-          <img class="jumbo-bg" src="./images/heros/hero-image_2.jpg" alt="Jumbotron">
+          <img class="jumbo-bg" src="./images/heros/hero-image_2-large.webp" alt="Jumbotron">
         </picture>
             <div class="jumbo-content">
                 <h1>Explore Your</h1>
