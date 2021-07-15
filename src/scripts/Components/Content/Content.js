@@ -57,7 +57,7 @@ class Content extends HTMLElement {
       this.contentLoop += `
             <a href="#/detail/${e.id}" id='${e.id}' class="card">
                 <div class="restopic">
-                    <img class="resto lazyload" height="220" width="270" src='${CONFIG.BASE_IMAGE_URL}/${e.pictureId}' alt="${e.name}">
+                    <img class="resto lazyload" height="220" width="270" data-src='${CONFIG.BASE_IMAGE_URL}/${e.pictureId}' alt="${e.name}">
                 </div>
                 <div class="rate">
                     <picture>

@@ -1,4 +1,4 @@
-import { openDB } from 'idb'
+import { deleteDB, openDB } from 'idb'
 import CONFIG from '../Global/Config'
 let db = null
 const DBInit = () => {
@@ -7,6 +7,9 @@ const DBInit = () => {
       database.createObjectStore(CONFIG.OBJECT_STORE_NAME, { keyPath: 'id' })
     }
   })
+}
+const DBDrop = () => {
+  db = deleteDB(CONFIG.DB_NAME)
 }
 const DBController = {
   async get (id) {
@@ -25,4 +28,4 @@ const DBController = {
     return (await db).delete(CONFIG.OBJECT_STORE_NAME, id)
   }
 }
-export { DBController, DBInit }
+export { DBController, DBInit, DBDrop }
