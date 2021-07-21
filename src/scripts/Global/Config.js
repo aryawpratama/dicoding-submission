@@ -5,7 +5,7 @@ const CONFIG = {
   BASE_IMAGE_URL_MEDIUM: 'https://restaurant-api.dicoding.dev/images/medium',
   BASE_IMAGE_URL_LARGE: 'https://restaurant-api.dicoding.dev/images/large',
   DEFAULT_LANG: 'en-us',
-  CACHE_NAME: new Date().toISOString(),
+  CACHE_NAME: 'AriaRestoV1',
   DB_NAME: 'ariaDB',
   DB_VERSION: 1,
   OBJECT_STORE_NAME: 'resto'
